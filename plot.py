@@ -18,7 +18,7 @@ with open(f'heat_maps/{file}', "r") as rf:
   data = eval(data)
   data = np.asarray(data)
   #map = plt.colors.Colormap('hot')
-  plt.imshow(data, cmap='hot_r', interpolation='nearest', vmin=0, vmax=101)
+  plt.imshow(data, cmap='hot_r', interpolation='nearest', vmin=0, vmax=101, extent=[0, 3, 0, 3])
   plt.ylabel("Y")
   plt.xlabel("X")
   plt.suptitle("L shaped Difference Simulation")
