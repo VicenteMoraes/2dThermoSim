@@ -11,4 +11,4 @@ Run `numerical-solution.lisp` to generate the steady state heat map. Afterwards 
 
 ## Video
 
-![Sim](animation.mp4)
+![Sim](animation.gif)
