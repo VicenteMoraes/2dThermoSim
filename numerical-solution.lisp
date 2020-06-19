@@ -14,7 +14,7 @@
     (when (> (- temp previous) *largest*) (setq *largest* (- temp previous)))
     temp))
 
-(defun get-cell (y x state) (unless (invalidP (* DY y) (* DX x)) (nth x (nth y state))))
+(defun get-cell (y x state) (unless (invalidp (* DY y) (* DX x)) (nth x (nth y state))))
 
 (defun get-valid-neighbours (y x state)
   (remove nil (list (get-cell (1+ y) x state) (get-cell (1- y) x state) (get-cell y (1+ x) state) (get-cell y (1- x) state))))
@@ -22,7 +22,7 @@
 (defun update-cycle (state)
   (loop for i from 0 to SIZE
 	collect (loop for j from 0 to SIZE
-		      collect (if (border (* DY i) (* DX j)) (get-cell i j state)
+		      collect (if (borderp (* DY i) (* DX j)) (get-cell i j state)
 				  (unless (invalidp (* DY i) (* DX j)) (update-temperature (get-valid-neighbours i j state) (get-cell i j state)))))))
 
 (defun rangep (num range-min range-max) (and (>= num range-min) (<= num range-max)))
@@ -30,7 +30,7 @@
 (defun invalidp (y x)
   (or (and (> x 1) (< y 2)) (< x 0) (< y 0) (> x 3) (> y 3)))
 
-(defun border (y x)
+(defun borderp (y x)
   (or (and (= x 0) (<= y 3))
       (and (<= x 1) (= y 0))
       (and (<= x 3) (= y 3))

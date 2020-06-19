@@ -9,7 +9,6 @@ def randomizer(func):
     length = len(data)
     for count in range(kwargs['num']):
       chosen = random.randint(0, length)
-      print(data[chosen])
       func([x * 0.01 for x in range(length)], data[chosen], "X", "Temperature",
            "Temperature by X axis Distance", f"Y fixed at {round(chosen * 0.01, 3)}")
   return wrapper
