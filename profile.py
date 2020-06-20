@@ -3,11 +3,10 @@ import numpy as np
 import random
 
 def randomizer(func):
-  def wrapper(*args, **kwargs):
+  def wrapper(data, num):
     random.seed()
-    data = kwargs['data']
     length = len(data)
-    for count in range(kwargs['num']):
+    for count in range(num):
       chosen = random.randint(0, length)
       func([x * 0.01 for x in range(length)], data[chosen], "X", "Temperature",
            "Temperature by X axis Distance", f"Y fixed at {round(chosen * 0.01, 3)}")
